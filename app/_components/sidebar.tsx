@@ -38,19 +38,21 @@ export const Sidebar: FC<{ pageMap: PageMapItem[] }> = ({ pageMap }) => {
           <div className="space-y-1">
             <button
               onClick={() => toggleSection(route)}
-              className={`w-full flex items-center justify-between px-3 py-2 text-sm rounded-lg transition-all duration-200 hover:bg-gray-100 ${
-                isActive ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-600' : 'text-gray-700'
+              className={`w-full flex items-center justify-between px-4 py-3 text-sm rounded-xl transition-all duration-300 hover:shadow-md ${
+                isActive 
+                  ? 'bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 text-purple-700 border-l-4 border-purple-500 backdrop-blur-sm' 
+                  : 'text-gray-700 hover:text-purple-700 hover:bg-white/60 hover:backdrop-blur-sm'
               }`}
             >
-              <span className="flex items-center space-x-2">
-                <span className={`transition-transform duration-200 ${isOpen ? 'rotate-90' : ''}`}>
-                  ▶
+              <span className="flex items-center space-x-3">
+                <span className={`transition-transform duration-300 text-purple-500 ${isOpen ? 'rotate-90' : ''}`}>
+                  ✦
                 </span>
                 <span className="font-medium">{title}</span>
               </span>
             </button>
             {isOpen && (
-              <ul className="space-y-1 pl-2 border-l border-gray-200">
+              <ul className="space-y-1 pl-2 border-l-2 border-gradient-to-b from-blue-300/50 to-purple-300/50">
                 {item.children.map((child: any) => renderItem(child, level + 1))}
               </ul>
             )}
@@ -58,10 +60,10 @@ export const Sidebar: FC<{ pageMap: PageMapItem[] }> = ({ pageMap }) => {
         ) : (
           <Anchor 
             href={route} 
-            className={`block px-3 py-2 text-sm rounded-lg transition-all duration-200 hover:bg-gray-100 ${
+            className={`block px-4 py-3 text-sm rounded-xl transition-all duration-300 hover:shadow-md ${
               isActive 
-                ? 'bg-blue-50 text-blue-700 border-l-4 border-blue-600 font-medium' 
-                : 'text-gray-700 hover:text-gray-900'
+                ? 'bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 text-purple-700 border-l-4 border-purple-500 font-medium backdrop-blur-sm' 
+                : 'text-gray-700 hover:text-purple-700 hover:bg-white/60 hover:backdrop-blur-sm'
             }`}
           >
             {title}
@@ -72,31 +74,42 @@ export const Sidebar: FC<{ pageMap: PageMapItem[] }> = ({ pageMap }) => {
   }
 
   return (
-    <aside className="w-80 bg-white border-r border-gray-200 overflow-y-auto">
+    <aside className="w-80 glass-morphism border-r border-white/20 overflow-y-auto backdrop-blur-lg">
       <div className="p-6">
         <div className="mb-6">
-          <h2 className="text-lg font-semibold text-gray-900 mb-2">Navigation</h2>
-          <div className="w-12 h-1 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full"></div>
+          <h2 className="text-lg font-semibold bg-gradient-to-r from-blue-600 via-purple-600 to-pink-600 bg-clip-text text-transparent mb-3">
+            ✨ 导航菜单
+          </h2>
+          <div className="w-16 h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 rounded-full shadow-sm"></div>
         </div>
 
         <nav className="space-y-2">
-          <ul className="space-y-1">
+          <ul className="space-y-2">
             {docsDirectories.map(item => renderItem(item))}
           </ul>
         </nav>
 
         {/* Additional Info */}
-        <div className="mt-8 p-4 bg-gradient-to-br from-blue-50 to-purple-50 rounded-lg border border-blue-100">
-          <div className="flex items-center space-x-2 mb-2">
-            <div className="w-3 h-3 bg-gradient-to-br from-blue-600 to-purple-600 rounded-full"></div>
-            <h3 className="text-sm font-semibold text-gray-900">Quick Info</h3>
+        <div className="mt-8 p-5 bg-gradient-to-br from-blue-50/60 via-purple-50/40 to-pink-50/60 rounded-2xl border border-white/30 backdrop-blur-sm shadow-lg">
+          <div className="flex items-center space-x-3 mb-3">
+            <div className="w-4 h-4 bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 rounded-full shadow-md"></div>
+            <h3 className="text-sm font-semibold bg-gradient-to-r from-blue-700 to-purple-700 bg-clip-text text-transparent">
+              快速信息
+            </h3>
           </div>
-          <p className="text-xs text-gray-600 leading-relaxed">
-            This is a custom Nextra theme that supports both React components and MDX content.
+          <p className="text-xs text-gray-700 leading-relaxed mb-4 font-light">
+            这是一个新海诚风格的 Nextra 主题，支持 React 组件和 MDX 内容，带来梦幻般的阅读体验。
           </p>
-          <div className="mt-3 flex space-x-2">
-            <span className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded font-medium">React</span>
-            <span className="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded font-medium">MDX</span>
+          <div className="flex flex-wrap gap-2">
+            <span className="px-3 py-1 bg-blue-500/20 text-blue-700 text-xs rounded-full font-medium backdrop-blur-sm border border-blue-200/50">
+              React
+            </span>
+            <span className="px-3 py-1 bg-purple-500/20 text-purple-700 text-xs rounded-full font-medium backdrop-blur-sm border border-purple-200/50">
+              MDX
+            </span>
+            <span className="px-3 py-1 bg-pink-500/20 text-pink-700 text-xs rounded-full font-medium backdrop-blur-sm border border-pink-200/50">
+              Makoto
+            </span>
           </div>
         </div>
       </div>

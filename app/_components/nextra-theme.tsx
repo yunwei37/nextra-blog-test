@@ -9,26 +9,21 @@ export const NextraTheme: FC<{
   pageMap: PageMapItem[]
 }> = ({ children, pageMap }) => {
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen relative z-10">
       {/* Header */}
-      <header className="bg-white shadow-sm border-b border-gray-200">
-        <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-6">
-          <div className="flex items-center justify-between max-w-7xl mx-auto">
-            <span className="text-sm font-medium">
-              🎉 Custom Nextra Theme - Powered by Nextra 4.x
-            </span>
-            <span className="text-xs opacity-90">Modern • Fast • Beautiful</span>
-          </div>
-        </div>
+      <header className="glass-morphism shadow-lg border-b border-white/20 relative z-20">
         <Navbar pageMap={pageMap} />
       </header>
 
       {/* Main Content */}
-      <div className="flex min-h-[calc(100vh-200px)]">
+      <div className="flex min-h-[calc(100vh-200px)] relative z-10">
         <Sidebar pageMap={pageMap} />
-        <main className="flex-1 bg-white">
-          <div className="max-w-none">
-            {children}
+        <main className="flex-1 glass-morphism backdrop-blur-lg">
+          <div className="max-w-none relative">
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 via-transparent to-purple-50/30 pointer-events-none"></div>
+            <div className="relative z-10">
+              {children}
+            </div>
           </div>
         </main>
       </div>
