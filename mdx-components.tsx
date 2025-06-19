@@ -2,7 +2,6 @@ import React, { type ReactNode } from 'react'
 import { useMDXComponents as getNextraComponents } from 'nextra/mdx-components'
 import { TOC } from './app/_components/toc'
 import type { Heading } from 'nextra'
-import type { MDXComponents } from 'mdx/types'
 
 interface WrapperProps {
   children: ReactNode
@@ -24,7 +23,7 @@ const defaultComponents = getNextraComponents({
   }
 })
 
-export const useMDXComponents = (components?: MDXComponents): MDXComponents => ({
+export const useMDXComponents = (components?: any): any => ({
   ...defaultComponents,
   ...components
 }) 
