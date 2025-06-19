@@ -1,4 +1,6 @@
-export default function HomePage() {
+import React from 'react'
+
+export default function HomePage(): React.ReactElement {
   return (
     <div className="px-8 py-6">
       <div className="text-center py-12">

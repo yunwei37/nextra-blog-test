@@ -1,8 +1,16 @@
+import React, { type ReactNode } from 'react'
 import { useMDXComponents as getNextraComponents } from 'nextra/mdx-components'
 import { TOC } from './app/_components/toc'
+import type { Heading } from 'nextra'
+import type { MDXComponents } from 'mdx/types'
+
+interface WrapperProps {
+  children: ReactNode
+  toc: Heading[]
+}
 
 const defaultComponents = getNextraComponents({
-  wrapper({ children, toc }) {
+  wrapper({ children, toc }: WrapperProps) {
     return (
       <div className="flex">
         <div className="flex-1 max-w-none px-8 py-6">
@@ -16,7 +24,7 @@ const defaultComponents = getNextraComponents({
   }
 })
 
-export const useMDXComponents = components => ({
+export const useMDXComponents = (components?: MDXComponents): MDXComponents => ({
   ...defaultComponents,
   ...components
 }) 

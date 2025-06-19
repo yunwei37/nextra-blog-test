@@ -1,8 +1,10 @@
+import React, { type ReactNode } from 'react'
 import { Head } from 'nextra/components'
 import { getPageMap } from 'nextra/page-map'
 import { NextraTheme } from './_components/nextra-theme'
+import type { Metadata } from 'next'
 
-export const metadata = {
+export const metadata: Metadata = {
   title: {
     default: 'Nextra Custom Theme',
     template: '%s - Nextra'
@@ -10,7 +12,11 @@ export const metadata = {
   description: 'A custom Nextra theme with React and MDX support'
 }
 
-export default async function RootLayout({ children }) {
+interface RootLayoutProps {
+  children: ReactNode
+}
+
+export default async function RootLayout({ children }: RootLayoutProps): Promise<React.ReactElement> {
   const pageMap = await getPageMap()
   return (
     <html lang="en" dir="ltr" suppressHydrationWarning>

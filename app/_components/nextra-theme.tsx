@@ -1,6 +1,5 @@
+import React, { type FC, type ReactNode } from 'react'
 import type { PageMapItem } from 'nextra'
-import { version } from 'nextra/package.json'
-import type { FC, ReactNode } from 'react'
 import { Footer } from './footer'
 import { Navbar } from './navbar'
 import { Sidebar } from './sidebar'
@@ -16,7 +15,7 @@ export const NextraTheme: FC<{
         <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white py-2 px-6">
           <div className="flex items-center justify-between max-w-7xl mx-auto">
             <span className="text-sm font-medium">
-              🎉 Custom Nextra Theme - Powered by Nextra {version}
+              🎉 Custom Nextra Theme - Powered by Nextra 4.x
             </span>
             <span className="text-xs opacity-90">Modern • Fast • Beautiful</span>
           </div>

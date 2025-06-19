@@ -1,5 +1,5 @@
+import React, { type FC } from 'react'
 import type { Heading } from 'nextra'
-import type { FC } from 'react'
 
 export const TOC: FC<{ toc: Heading[] }> = ({ toc }) => {
   if (!toc.length) return null

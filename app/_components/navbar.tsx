@@ -1,10 +1,10 @@
 'use client'
 
+import React, { type FC } from 'react'
 import { usePathname } from 'next/navigation'
 import type { PageMapItem } from 'nextra'
 import { Anchor } from 'nextra/components'
 import { normalizePages } from 'nextra/normalize-pages'
-import type { FC } from 'react'
 
 export const Navbar: FC<{ pageMap: PageMapItem[] }> = ({ pageMap }) => {
   const pathname = usePathname()

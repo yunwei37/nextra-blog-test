@@ -1,95 +1,14 @@
-import { Callout } from 'nextra/components'
-import { Steps } from 'nextra/components'
-import { Tabs, Tab } from 'nextra/components'
-
 # Built-in Components
 
-Nextra provides a rich set of built-in components to enhance your documentation.
+This page demonstrates various components and features available in Nextra.
 
 ## Callouts
 
-<Callout type="default">
-  <div>A default callout. Can be used to highlight important information.</div>
-</Callout>
+> **Info:** This is an information callout using markdown blockquote syntax.
 
-<Callout type="info" emoji="ℹ️">
-  <div>An info callout. Perfect for providing additional context.</div>
-</Callout>
+> **Warning:** ⚠️ This is a warning callout.
 
-<Callout type="warning" emoji="⚠️">
-  <div>A warning callout. Use this to alert users about potential issues.</div>
-</Callout>
-
-<Callout type="error" emoji="🚫">
-  <div>An error callout. Use this for critical information or errors.</div>
-</Callout>
-
-```mdx
-<Callout type="info" emoji="ℹ️">
-  <div>Your callout content here.</div>
-</Callout>
-```
-
-## Steps
-
-<Steps>
-### Step 1: Installation
- 
-Install the required dependencies for your project.
- 
-### Step 2: Configuration
- 
-Set up your configuration files.
- 
-### Step 3: Development
- 
-Start developing your application.
-</Steps>
-
-```mdx
-<Steps>
-### Step 1
-
-First step content.
-
-### Step 2
-
-Second step content.
-</Steps>
-```
-
-## Tabs
-
-<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
-  <Tab>
-    ```bash
-    npm install nextra nextra-theme-docs
-    ```
-  </Tab>
-  <Tab>
-    ```bash
-    pnpm add nextra nextra-theme-docs
-    ```
-  </Tab>
-  <Tab>
-    ```bash
-    yarn add nextra nextra-theme-docs
-    ```
-  </Tab>
-  <Tab>
-    ```bash
-    bun add nextra nextra-theme-docs
-    ```
-  </Tab>
-</Tabs>
-
-```mdx
-<Tabs items={['npm', 'pnpm', 'yarn']}>
-  <Tab>npm content</Tab>
-  <Tab>pnpm content</Tab>
-  <Tab>yarn content</Tab>
-</Tabs>
-```
+> **Note:** 📝 This is a note callout.
 
 ## Code Blocks
 
@@ -130,16 +49,16 @@ npm install nextra nextra-theme-docs
 
 ```
 ├── app/
-│   ├── layout.jsx
-│   ├── page.mdx
-│   ├── _meta.js
+│   ├── layout.tsx
+│   ├── page.tsx
+│   ├── _meta.ts
 │   └── docs/
 │       ├── page.mdx
-│       ├── _meta.js
+│       ├── _meta.ts
 │       └── components/
 │           └── page.mdx
 ├── next.config.mjs
-├── mdx-components.js
+├── mdx-components.tsx
 └── package.json
 ```
 
@@ -161,14 +80,52 @@ $$
 | Themes | Beautiful built-in themes | ✅ |
 | Search | Full-text search functionality | ✅ |
 | Performance | Optimized for speed | ✅ |
+| TypeScript | Full TypeScript support | ✅ |
+
+## Interactive Elements
+
+You can embed React components directly in MDX:
+
+<div className="p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg border border-blue-200 my-4">
+  <h3 className="text-lg font-semibold text-blue-800 mb-2">📦 Custom Component</h3>
+  <p className="text-blue-700">
+    This is a custom component embedded directly in MDX! You can mix HTML, Tailwind CSS, and React components seamlessly.
+  </p>
+  <div className="mt-3 flex space-x-2">
+    <span className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded font-medium">React</span>
+    <span className="px-2 py-1 bg-purple-100 text-purple-800 text-xs rounded font-medium">MDX</span>
+    <span className="px-2 py-1 bg-green-100 text-green-800 text-xs rounded font-medium">TypeScript</span>
+  </div>
+</div>
+
+## Lists
+
+### Ordered List
+
+1. First item
+2. Second item
+3. Third item
+   - Nested item
+   - Another nested item
+
+### Unordered List
+
+- ✅ Feature one
+- ✅ Feature two
+- ✅ Feature three
+- ❌ Feature not yet available
 
 ## Custom Components
 
-You can also create and use your own React components in MDX:
+You can create and use your own React components in MDX:
 
-```jsx
-// components/MyComponent.jsx
-export function MyComponent({ children }) {
+```tsx
+// components/MyComponent.tsx
+interface MyComponentProps {
+  children: React.ReactNode
+}
+
+export function MyComponent({ children }: MyComponentProps) {
   return (
     <div className="my-custom-component">
       {children}
@@ -187,6 +144,6 @@ import { MyComponent } from '../components/MyComponent'
 </MyComponent>
 ```
 
-<Callout type="info">
-  <div>For more components and customization options, check out the [Nextra documentation](http://nextra.site/docs/built-in-components).</div>
-</Callout> 
+## Next Steps
+
+> 💡 **Tip:** For more advanced components and customization options, check out the [Nextra documentation](http://nextra.site/docs). 

@@ -1,17 +1,31 @@
 'use client'
 
-import { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 
-export default function ReactAppPage() {
-  const [todos, setTodos] = useState([
+interface Todo {
+  id: number
+  text: string
+  completed: boolean
+}
+
+type FilterType = 'all' | 'active' | 'completed'
+
+interface Stats {
+  total: number
+  completed: number
+  active: number
+}
+
+export default function ReactAppPage(): React.ReactElement {
+  const [todos, setTodos] = useState<Todo[]>([
     { id: 1, text: 'Learn Nextra', completed: false },
     { id: 2, text: 'Build custom theme', completed: true },
     { id: 3, text: 'Create React app page', completed: false }
   ])
-  const [newTodo, setNewTodo] = useState('')
-  const [filter, setFilter] = useState('all')
+  const [newTodo, setNewTodo] = useState<string>('')
+  const [filter, setFilter] = useState<FilterType>('all')
 
-  const addTodo = () => {
+  const addTodo = (): void => {
     if (newTodo.trim()) {
       setTodos([...todos, {
         id: Date.now(),
@@ -22,27 +36,43 @@ export default function ReactAppPage() {
     }
   }
 
-  const toggleTodo = (id) => {
+  const toggleTodo = (id: number): void => {
     setTodos(todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     ))
   }
 
-  const deleteTodo = (id) => {
+  const deleteTodo = (id: number): void => {
     setTodos(todos.filter(todo => todo.id !== id))
   }
 
-  const filteredTodos = todos.filter(todo => {
+  const filteredTodos: Todo[] = todos.filter(todo => {
     if (filter === 'active') return !todo.completed
     if (filter === 'completed') return todo.completed
     return true
   })
 
-  const stats = {
+  const stats: Stats = {
     total: todos.length,
     completed: todos.filter(t => t.completed).length,
     active: todos.filter(t => !t.completed).length
   }
+
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === 'Enter') {
+      addTodo()
+    }
+  }
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setNewTodo(e.target.value)
+  }
+
+  const handleFilterChange = (filterType: FilterType): void => {
+    setFilter(filterType)
+  }
+
+  const filters: FilterType[] = ['all', 'active', 'completed']
 
   return (
     <div className="px-8 py-6">
@@ -90,8 +120,8 @@ export default function ReactAppPage() {
             <input
               type="text"
               value={newTodo}
-              onChange={(e) => setNewTodo(e.target.value)}
-              onKeyPress={(e) => e.key === 'Enter' && addTodo()}
+              onChange={handleInputChange}
+              onKeyPress={handleKeyPress}
               placeholder="Add a new task..."
               className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
@@ -106,10 +136,10 @@ export default function ReactAppPage() {
 
         {/* Filters */}
         <div className="flex justify-center space-x-2 mb-6">
-          {['all', 'active', 'completed'].map(filterType => (
+          {filters.map(filterType => (
             <button
               key={filterType}
-              onClick={() => setFilter(filterType)}
+              onClick={() => handleFilterChange(filterType)}
               className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors capitalize ${
                 filter === filterType
                   ? 'bg-blue-600 text-white'
@@ -155,6 +185,7 @@ export default function ReactAppPage() {
                     <button
                       onClick={() => deleteTodo(todo.id)}
                       className="p-1 text-red-600 hover:text-red-800 hover:bg-red-50 rounded transition-colors"
+                      aria-label={`Delete task: ${todo.text}`}
                     >
                       <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
@@ -195,7 +226,7 @@ export default function ReactAppPage() {
             </div>
             <div className="flex items-center space-x-2">
               <span className="text-green-500">✓</span>
-              <span>Tailwind CSS Styling</span>
+              <span>TypeScript Support</span>
             </div>
           </div>
         </div>
