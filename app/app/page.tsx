@@ -78,22 +78,26 @@ export default function ReactAppPage(): React.ReactElement {
     <div className="px-8 py-6">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            React Todo App
+        <div className="text-center mb-8 relative">
+          {/* 可爱装饰 */}
+          <div className="absolute top-0 left-1/4 animate-bounce text-pink-400 text-2xl">🌸</div>
+          <div className="absolute top-4 right-1/3 animate-pulse text-purple-400 text-xl">✨</div>
+          
+          <h1 className="text-5xl font-bold bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 bg-clip-text text-transparent mb-4">
+            🎮 Claude的可爱任务管理器
           </h1>
-          <p className="text-gray-600">
-            This is a pure React application page within our custom Nextra theme
+          <p className="text-pink-600 text-lg font-medium">
+            ～(＾◡＾)～ 这是一个超可爱的React应用，融入Claude的二次元主题 ～(＾◡＾)～
           </p>
-          <div className="flex justify-center space-x-4 mt-4 text-sm">
-            <span className="px-3 py-1 bg-blue-100 text-blue-700 rounded-full font-medium">
-              React Hooks
+          <div className="flex justify-center space-x-4 mt-6 text-sm">
+            <span className="px-4 py-2 bg-gradient-to-r from-pink-100 to-pink-200 text-pink-700 rounded-full font-bold border border-pink-300">
+              🌸 React Hooks
             </span>
-            <span className="px-3 py-1 bg-purple-100 text-purple-700 rounded-full font-medium">
-              Interactive
+            <span className="px-4 py-2 bg-gradient-to-r from-purple-100 to-purple-200 text-purple-700 rounded-full font-bold border border-purple-300">
+              💜 Interactive
             </span>
-            <span className="px-3 py-1 bg-green-100 text-green-700 rounded-full font-medium">
-              Real-time
+            <span className="px-4 py-2 bg-gradient-to-r from-indigo-100 to-indigo-200 text-indigo-700 rounded-full font-bold border border-indigo-300">
+              ✨ Real-time
             </span>
           </div>
         </div>
