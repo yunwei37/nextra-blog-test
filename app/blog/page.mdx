@@ -1,0 +1,71 @@
+# Welcome to Our Blog
+
+This is an example blog page written in **MDX**. You can use all the power of Markdown with React components mixed in seamlessly.
+
+## What makes MDX special?
+
+MDX allows you to:
+
+- Write content in Markdown
+- Use React components anywhere
+- Import JavaScript modules
+- Create interactive documentation
+
+## Interactive Example
+
+Here's a simple interactive component right in our MDX:
+
+<div className="p-6 bg-gradient-to-r from-purple-100 to-pink-100 rounded-lg border border-purple-200 my-6">
+  <h3 className="text-xl font-bold text-purple-800 mb-3">🎨 Interactive Color Demo</h3>
+  <p className="text-purple-700 mb-4">
+    This is a React component embedded directly in MDX content!
+  </p>
+  <div className="flex space-x-2">
+    <div className="w-8 h-8 bg-red-500 rounded"></div>
+    <div className="w-8 h-8 bg-blue-500 rounded"></div>
+    <div className="w-8 h-8 bg-green-500 rounded"></div>
+    <div className="w-8 h-8 bg-yellow-500 rounded"></div>
+  </div>
+</div>
+
+## Code Examples
+
+You can include syntax-highlighted code blocks:
+
+```javascript
+function createBlogPost(title, content) {
+  return {
+    title,
+    content,
+    publishedAt: new Date(),
+    slug: title.toLowerCase().replace(/\s+/g, '-')
+  }
+}
+
+const post = createBlogPost('My First Post', 'Hello, world!')
+console.log(post)
+```
+
+## Lists and More
+
+### Features we love:
+
+1. **Fast compilation** - MDX compiles quickly
+2. **Great DX** - Amazing developer experience
+3. **Flexible** - Mix content with components
+4. **Powerful** - Full React ecosystem access
+
+### Quick facts:
+
+- MDX was created by the folks at Vercel
+- It's built on top of unified.js
+- Works great with Next.js
+- Perfect for documentation sites
+
+## Conclusion
+
+MDX gives you the best of both worlds - the simplicity of Markdown with the power of React. Perfect for creating rich, interactive documentation and blog content.
+
+---
+
+*Published on {new Date().toLocaleDateString()} • 5 min read* 

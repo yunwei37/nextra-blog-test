@@ -1,0 +1,147 @@
+# Configuration
+
+Learn how to configure your Nextra site for optimal performance and customization.
+
+## Basic Configuration
+
+Your `next.config.mjs` file is the central place for Nextra configuration:
+
+```js
+import nextra from 'nextra'
+
+const withNextra = nextra({
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.tsx'
+})
+
+export default withNextra({
+  // Next.js configuration
+  experimental: {
+    optimizeCss: true
+  }
+})
+```
+
+## Theme Configuration
+
+Create a `theme.config.tsx` file to customize your theme:
+
+```tsx
+import type { DocsThemeConfig } from 'nextra-theme-docs'
+
+const config: DocsThemeConfig = {
+  logo: <span>My Project</span>,
+  project: {
+    link: 'https://github.com/your-username/your-repo'
+  },
+  chat: {
+    link: 'https://discord.gg/your-invite'
+  },
+  docsRepositoryBase: 'https://github.com/your-username/your-repo/tree/main',
+  footer: {
+    text: 'MIT 2024 © Your Company'
+  }
+}
+
+export default config
+```
+
+## Advanced Options
+
+### Search Configuration
+
+Enable search functionality:
+
+```js
+const withNextra = nextra({
+  theme: 'nextra-theme-docs',
+  themeConfig: './theme.config.tsx',
+  search: {
+    codeblocks: false
+  }
+})
+```
+
+### Static Exports
+
+For static hosting:
+
+```js
+export default withNextra({
+  output: 'export',
+  trailingSlash: true,
+  images: {
+    unoptimized: true
+  }
+})
+```
+
+### Custom CSS
+
+Add custom styles:
+
+```js
+export default withNextra({
+  experimental: {
+    optimizeCss: true
+  }
+})
+```
+
+## Environment Variables
+
+Common environment variables for Nextra:
+
+```bash
+# .env.local
+NEXT_PUBLIC_SITE_URL=https://yourdomain.com
+NEXTRA_SEARCH_API_KEY=your-search-api-key
+```
+
+## Performance Optimization
+
+### Image Optimization
+
+```js
+export default withNextra({
+  images: {
+    domains: ['example.com'],
+    formats: ['image/webp', 'image/avif']
+  }
+})
+```
+
+### Bundle Analysis
+
+```js
+export default withNextra({
+  experimental: {
+    bundlePagesExternals: true
+  }
+})
+```
+
+## Deployment
+
+### Vercel
+
+```json
+{
+  "buildCommand": "next build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install"
+}
+```
+
+### Netlify
+
+```toml
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+```
+
+For more advanced configuration options, check the [official Nextra documentation](http://nextra.site/docs). 

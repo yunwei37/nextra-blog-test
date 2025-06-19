@@ -1,0 +1,192 @@
+import { Callout } from 'nextra/components'
+import { Steps } from 'nextra/components'
+import { Tabs, Tab } from 'nextra/components'
+
+# Built-in Components
+
+Nextra provides a rich set of built-in components to enhance your documentation.
+
+## Callouts
+
+<Callout type="default">
+  <div>A default callout. Can be used to highlight important information.</div>
+</Callout>
+
+<Callout type="info" emoji="ℹ️">
+  <div>An info callout. Perfect for providing additional context.</div>
+</Callout>
+
+<Callout type="warning" emoji="⚠️">
+  <div>A warning callout. Use this to alert users about potential issues.</div>
+</Callout>
+
+<Callout type="error" emoji="🚫">
+  <div>An error callout. Use this for critical information or errors.</div>
+</Callout>
+
+```mdx
+<Callout type="info" emoji="ℹ️">
+  <div>Your callout content here.</div>
+</Callout>
+```
+
+## Steps
+
+<Steps>
+### Step 1: Installation
+ 
+Install the required dependencies for your project.
+ 
+### Step 2: Configuration
+ 
+Set up your configuration files.
+ 
+### Step 3: Development
+ 
+Start developing your application.
+</Steps>
+
+```mdx
+<Steps>
+### Step 1
+
+First step content.
+
+### Step 2
+
+Second step content.
+</Steps>
+```
+
+## Tabs
+
+<Tabs items={['npm', 'pnpm', 'yarn', 'bun']}>
+  <Tab>
+    ```bash
+    npm install nextra nextra-theme-docs
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    pnpm add nextra nextra-theme-docs
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    yarn add nextra nextra-theme-docs
+    ```
+  </Tab>
+  <Tab>
+    ```bash
+    bun add nextra nextra-theme-docs
+    ```
+  </Tab>
+</Tabs>
+
+```mdx
+<Tabs items={['npm', 'pnpm', 'yarn']}>
+  <Tab>npm content</Tab>
+  <Tab>pnpm content</Tab>
+  <Tab>yarn content</Tab>
+</Tabs>
+```
+
+## Code Blocks
+
+### Basic Code Block
+
+```javascript
+function hello() {
+  console.log('Hello, Nextra!')
+}
+```
+
+### With Filename
+
+```javascript filename="hello.js"
+function hello() {
+  console.log('Hello, Nextra!')
+}
+```
+
+### With Line Highlighting
+
+```javascript {2-4}
+function calculate(a, b) {
+  const sum = a + b
+  const difference = a - b
+  const product = a * b
+  return { sum, difference, product }
+}
+```
+
+### Copy Button
+
+```bash copy
+npm install nextra nextra-theme-docs
+```
+
+## File Tree
+
+```
+├── app/
+│   ├── layout.jsx
+│   ├── page.mdx
+│   ├── _meta.js
+│   └── docs/
+│       ├── page.mdx
+│       ├── _meta.js
+│       └── components/
+│           └── page.mdx
+├── next.config.mjs
+├── mdx-components.js
+└── package.json
+```
+
+## Math Expressions
+
+Inline math: $E = mc^2$
+
+Block math:
+
+$$
+\frac{1}{\sqrt{2\pi\sigma^2}} e^{-\frac{(x-\mu)^2}{2\sigma^2}}
+$$
+
+## Tables
+
+| Feature | Description | Available |
+|---------|-------------|-----------|
+| MDX Support | Full React component support in Markdown | ✅ |
+| Themes | Beautiful built-in themes | ✅ |
+| Search | Full-text search functionality | ✅ |
+| Performance | Optimized for speed | ✅ |
+
+## Custom Components
+
+You can also create and use your own React components in MDX:
+
+```jsx
+// components/MyComponent.jsx
+export function MyComponent({ children }) {
+  return (
+    <div className="my-custom-component">
+      {children}
+    </div>
+  )
+}
+```
+
+Then use it in your MDX:
+
+```mdx
+import { MyComponent } from '../components/MyComponent'
+
+<MyComponent>
+  This is my custom component content!
+</MyComponent>
+```
+
+<Callout type="info">
+  <div>For more components and customization options, check out the [Nextra documentation](http://nextra.site/docs/built-in-components).</div>
+</Callout> 
